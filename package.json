@@ -1,14 +1,15 @@
 {
-  "name": "اسيا - بوت واتساب",
-  "version": "2.0.0",
-  "description": "Simple WhatsApp bot by 3QAB",
+  "name": "اسيا - بوت واتساب عربي",
+  "version": "2.1.0",
+  "description": "بوت واتساب متقدم بالعربية مع إطار عمل MeowSab",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "node index.js"
   },
-  "keywords": ["whatsapp-bot", "pomni-ai"],
-  "author": "3QAB - 515",
+  "keywords": ["whatsapp-bot", "asia-bot", "arabic-bot", "واتساب-بوت"],
+  "author": "3QAB-AS",
   "license": "MIT",
   "dependencies": {
     "meowsab": "https://github.com/deveni0/ws/tarball/main",
