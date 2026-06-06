@@ -9,10 +9,9 @@ const client = new Client({
   prefix: [".", "/", "!"],
   fromMe: false, 
   owners: [
-    { name: "3QAB", lid: "515", jid: "301142182793@s.whatsapp.net" },
-    { name: "3QAB", lid: "515", jid: "301142182793@s.whatsapp.net" },
-    { name: "3QAB", lid: "515", jid: "301142182793@s.whatsapp.net" },
-    { name: "3QAB", lid: "515", jid: "301142182793@s.whatsapp.net" }
+  // المالك 1
+    { name: "3QAB-AS", lid: "52429437595728@lid", jid: "201142182793@s.whatsapp.net" },
+  // يمكنك إضافة مالكين آخرين هنا
   ],
   settings: { noWelcome: false },
   commandsPath: './plugins'
@@ -21,25 +20,26 @@ const client = new Client({
 client.onGroupEvent(group);
 client.onCommandAccess(access);
 
-/* =========== Database ========== */
+/* =========== قاعدة البيانات ========== */
 if (!global.db) {
     global.db = new UltraDB();
 }
 
-/* =========== Config ========== */
+/* =========== الإعدادات ========== */
 const { config } = client;
 config.info = { 
-  nameBot: "𝑨𝒔𝒊𝒂 𝑽1", 
-  nameChannel: "𝑨𝒔𝒊𝒂 𝑽1", 
+  nameBot: "♡ اسيا v1 🎪 〈", 
+  nameChannel: "اسيا v1", 
   idChannel: "120363426553571462@newsletter",
   urls: {
-    repo: "https://github.com/3QAB-515/asia-bot-whatsapp",
+    repo: "https://github.com/bassam01013945233-sys/asia-bot-whatsapp",
     api: "https://emam-api.web.id",
+    group: "https://chat.whatsapp.com/B8kEK01jpzN3z61uv2OrMp",
     channel: "https://whatsapp.com/channel/0029VbD2pIvFXUuVFTTsek0J"
   },
   copyright: { 
-    pack: '𝑨𝒔𝒊𝒂 𝑽1', 
-    author: '3QAB'
+    pack: 'اسيا v1', 
+    author: '3QAB-AS'
   },
   images: [
     "https://i.pinimg.com/originals/11/26/97/11269786cdb625c60213212aa66273a9.png",
@@ -48,20 +48,35 @@ config.info = {
   ]
 };
 
-/* =========== Start ========== */
+/* =========== بدء التشغيل ========== */
 client.start();
 
 setTimeout(async () => {
-  if (client.commandSystem) { 
-    sub(client)
+if (client.commandSystem) { 
+sub(client)
   }
 }, 2000);
 
-/* =========== Catch Errors ========== */
+
+/* =========== معالجة الأخطاء ========== */
 process.on('uncaughtException', (e) => {
     if (e.message.includes('rate-overlimit')) {}
 });
 
 process.on('unhandledRejection', (err) => {
-    console.error('Unhandled Rejection:', err)
+    console.error('❌ رفض غير معالج:', err)
 });
+
+
+/* 
+=========== مراقب الذاكرة ========== 
+
+setInterval(() => {
+    const used = process.memoryUsage().rss / 1024 / 1024
+    if (used > 800) {
+        console.log(`🔄 ذاكرة البوت ممتلئة (${used.toFixed(1)}MB), إعادة تشغيل...`)
+        process.exit(1) 
+    }
+}, 300_000) 
+
+*/
